@@ -21,9 +21,6 @@ public class GameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game);
         populateButtons();
 
-        game_dimension = OptionsActivity.getGameSize(this);
-        TextView tv = findViewById(R.id.autism);
-        tv.setText(game_dimension);
 
     }
 

@@ -72,27 +72,55 @@ public class OptionsActivity extends AppCompatActivity {
                 }
             });
             group.addView(btn);
-            if(selected_game_size.equals(getGameSize(this))){
+            //FIXXX
+            String gameSize = getRowCount(this) + " x " + getColCount(this);
+            if(selected_game_size.equals(gameSize)){
                 btn.setChecked(true);
             }
         }
     }
 
 
-    private static final String PANEL_PREF_NAME = "Game Size";
+    private static final String ROW_PREF_NAME = "Row Amount";
+    private static final String COL_PREF_NAME = "Column Amount";
     private static final String PREFS_NAME = "AppPrefs";
     private void saveGameSize(String selected_game_size) {
+        int rows;
+        int cols;
+        switch(selected_game_size){
+            case "5 x 10":
+                rows = 5;
+                cols = 10;
+                break;
+            case "6 x 15":
+                rows = 6;
+                cols = 15;
+                break;
+            default:
+                rows = 4;
+                cols = 6;
+                break;
+        }
         SharedPreferences prefs = this.getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
-        editor.putString(PANEL_PREF_NAME, selected_game_size);
+        editor.putInt(ROW_PREF_NAME, rows);
+        editor.putInt(COL_PREF_NAME, cols);
         editor.apply();
     }
 
-    static public String getGameSize(Context context){
+    static public int getRowCount(Context context){
         SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-        String defaultSize = context.getResources().getString(R.string.default_game_size);
-        return prefs.getString(PANEL_PREF_NAME, defaultSize);
+        int defaultRows = context.getResources().getInteger(R.integer.default_rows);
+
+        return prefs.getInt(ROW_PREF_NAME, defaultRows);
     }
+    static public int getColCount(Context context){
+        SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        int defaultCols = context.getResources().getInteger(R.integer.default_cols);
+
+        return prefs.getInt(COL_PREF_NAME, defaultCols);
+    }
+
 
     public static Intent makeIntent(Context context){
         return new Intent(context, OptionsActivity.class);

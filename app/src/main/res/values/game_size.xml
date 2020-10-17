@@ -8,6 +8,8 @@
     </string-array>
 
     <string name="default_game_size">"4 x 6"</string>
+    <integer name="default_rows">4</integer>
+    <integer name="default_cols">6</integer>
 
     <integer-array name="number_of_gems">
         <item>6</item>
