@@ -12,6 +12,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class OptionsActivity extends AppCompatActivity {
 
     @Override
@@ -65,7 +67,7 @@ public class OptionsActivity extends AppCompatActivity {
             btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(OptionsActivity.this, "you clicked: " + selected_game_size, Toast.LENGTH_SHORT).show();
+
                     saveGameSize(selected_game_size);
                 }
             });
@@ -75,6 +77,7 @@ public class OptionsActivity extends AppCompatActivity {
             }
         }
     }
+
 
     private static final String PANEL_PREF_NAME = "Game Size";
     private static final String PREFS_NAME = "AppPrefs";
