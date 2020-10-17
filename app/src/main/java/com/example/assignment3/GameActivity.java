@@ -2,6 +2,7 @@ package com.example.assignment3;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.VoiceInteractor;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -17,24 +18,23 @@ import android.widget.TextView;
 
 public class GameActivity extends AppCompatActivity {
 
-    private static final int NUM_ROWS = 4;
-    private static final int NUM_COLS = 6;
-    Button buttons[][] = new Button[NUM_ROWS][NUM_COLS];
-    String game_dimension;
-
-
+    private static int row_amount;
+    private static int col_amount;
+    Button buttons[][];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+        row_amount = OptionsActivity.getRowCount(this);
+        col_amount = OptionsActivity.getColCount(this);
+        buttons = new Button[row_amount][col_amount];
+
         populateButtons();
-
-
     }
 
     private void populateButtons() {
         TableLayout table = findViewById(R.id.table_for_buttons);
-        for(int row = 0; row < NUM_ROWS; row++){
+        for(int row = 0; row < row_amount; row++){
             TableRow tableRow = new TableRow(this);
             tableRow.setLayoutParams(new TableLayout.LayoutParams(
                     TableLayout.LayoutParams.MATCH_PARENT,
@@ -42,7 +42,7 @@ public class GameActivity extends AppCompatActivity {
                     1.0f
             ));
             table.addView(tableRow);
-            for(int col = 0; col < NUM_COLS; col++){
+            for(int col = 0; col < col_amount; col++){
                 final int FINAL_COL = col;
                 final int FINAL_ROW = row;
                 Button btn = new Button(this);
@@ -81,8 +81,8 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void lockButtonSizes() {
-        for (int row = 0; row < NUM_ROWS; row++){
-            for(int col = 0; col < NUM_COLS; col++){
+        for (int row = 0; row < row_amount; row++){
+            for(int col = 0; col < col_amount; col++){
                 Button btn = buttons[row][col];
                 int width = btn.getWidth();
                 btn.setMinWidth(width);
@@ -94,7 +94,6 @@ public class GameActivity extends AppCompatActivity {
             }
         }
     }
-
 
     public static Intent makeIntent(Context context){
         return new Intent(context, GameActivity.class);
