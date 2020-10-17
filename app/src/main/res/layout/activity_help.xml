@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HelpActivity">
+
+    <TextView
+        android:id="@+id/help_text"
+        android:layout_width="620dp"
+        android:layout_height="184dp"
+        android:layout_marginTop="10dp"
+        android:lineSpacingExtra="8sp"
+        android:text="Welcome to the Gem Mine! To begin playing, tap on the Play button on the main menu and you will be taken to the main game. Tap on a rock to mine it, if there's a gem in the rock then you have found a gem! If the rock was empty, the rock will show how many gems are in its rows and columns combined. The objective of the game is to find all the gems while tapping the fewest number of empty rocks. You may also tap on a gem to reveal how many gems are in its row and column. You can also change the number of rocks you have to search through as well as the number of hidden gems in the rocks by tapping on the Options button on the main menu."
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/txt_how_to_play"
+        app:layout_constraintTop_toBottomOf="@+id/txt_how_to_play" />
+
+    <TextView
+        android:id="@+id/txt_how_to_play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="25dp"
+        android:text="How to Play"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="back"
+        app:layout_constraintEnd_toEndOf="@+id/help_text"
+        app:layout_constraintTop_toBottomOf="@+id/help_text" />
+</androidx.constraintlayout.widget.ConstraintLayout>

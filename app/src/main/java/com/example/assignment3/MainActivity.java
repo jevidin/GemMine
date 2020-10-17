@@ -1,6 +1,7 @@
 package com.example.assignment3;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.content.res.Resources;
@@ -20,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         setupPlayButton();
         setupOptionsButton();
-
+        setupHelpButton();
     }
 
     private void setupOptionsButton() {
@@ -47,6 +48,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+            }
+        });
+    }
+
+    private void setupHelpButton(){
+        Button btn = findViewById(R.id.btn_help);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, HelpActivity.class);
+                startActivity(intent);
             }
         });
     }
