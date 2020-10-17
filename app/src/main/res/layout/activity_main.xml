@@ -11,8 +11,8 @@
         android:id="@+id/btn_play"
         android:layout_width="210dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="104dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="84dp"
         android:text="Play"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

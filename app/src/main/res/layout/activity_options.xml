@@ -8,12 +8,36 @@
 
     <RadioGroup
         android:id="@+id/radio_group_game_size"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="62dp"
-        android:layout_marginTop="70dp"
-        android:layout_marginEnd="100dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="@+id/txt_board_size"
+        app:layout_constraintTop_toBottomOf="@+id/txt_board_size" />
+
+    <TextView
+        android:id="@+id/txt_board_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="44dp"
+        android:text="Game Board Size:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_gems"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="250dp"
+        android:text="Number of gems"
+        app:layout_constraintStart_toEndOf="@+id/txt_board_size"
+        app:layout_constraintTop_toTopOf="@+id/txt_board_size" />
+
+    <RadioGroup
+        android:id="@+id/radio_group_gems"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="@+id/txt_gems"
+        app:layout_constraintTop_toBottomOf="@+id/txt_gems" />
 </androidx.constraintlayout.widget.ConstraintLayout>

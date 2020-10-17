@@ -4,5 +4,17 @@
         <item>"4 x 6"</item>
         <item>"5 x 10"</item>
         <item>"6 x 15"</item>
+
     </string-array>
+
+    <string name="default_game_size">"4 x 6"</string>
+
+    <integer-array name="number_of_gems">
+        <item>6</item>
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
+    </integer-array>
+
+    <integer name="default_gems">6</integer>
 </resources>
