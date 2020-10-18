@@ -11,6 +11,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -30,7 +31,10 @@ public class GameActivity extends AppCompatActivity {
         buttons = new Button[row_amount][col_amount];
 
         populateButtons();
+
     }
+
+
 
     private void populateButtons() {
         TableLayout table = findViewById(R.id.table_for_buttons);
@@ -45,12 +49,9 @@ public class GameActivity extends AppCompatActivity {
             for(int col = 0; col < col_amount; col++){
                 final int FINAL_COL = col;
                 final int FINAL_ROW = row;
-                Button btn = new Button(this);
-                btn.setLayoutParams(new TableRow.LayoutParams(
-                        TableRow.LayoutParams.MATCH_PARENT,
-                        TableRow.LayoutParams.MATCH_PARENT,
-                        1.0f
-                ));
+                final Button btn = new Button(this);
+                TableRow.LayoutParams layoutParams = new TableRow.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.MATCH_PARENT, 1.0f);
+                btn.setLayoutParams(layoutParams);
                 btn.setText("" + col + "," + row);
                 btn.setPadding(0, 0, 0, 0);
                 btn.setOnClickListener(new View.OnClickListener() {
@@ -59,12 +60,27 @@ public class GameActivity extends AppCompatActivity {
                         gridButtonClicked(FINAL_COL, FINAL_ROW);
                     }
                 });
+                // code to add the background after button sizes are determined is partially taken from: https://stackoverflow.com/questions/3591784/views-getwidth-and-getheight-returns-0
+                btn.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+                    @Override
+                    public void onGlobalLayout() {
+                        btn.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                        int newWidth = btn.getHeight();
+                        int newHeight = btn.getHeight();
+                        Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.virus_green);
+                        Bitmap scaledBitmap = Bitmap.createScaledBitmap(originalBitmap, newWidth, newHeight, true);
+                        Resources resource = getResources();
+                        btn.setBackground(new BitmapDrawable(resource, scaledBitmap));
+                    }
+                });
+
                 tableRow.addView(btn);
                 buttons[row][col] = btn;
             }
         }
 
     }
+
 
     private void gridButtonClicked(int col, int row) {
         Button btn = buttons[row][col];
