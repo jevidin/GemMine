@@ -83,7 +83,7 @@ public class GameActivity extends AppCompatActivity {
                         btn.getViewTreeObserver().removeOnGlobalLayoutListener(this);
                         int newWidth = btn.getHeight();
                         int newHeight = btn.getHeight();
-                        Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.virus_green);
+                        Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.rock2shrinked);
                         Bitmap scaledBitmap = Bitmap.createScaledBitmap(originalBitmap, newWidth, newHeight, true);
                         Resources resource = getResources();
                         btn.setBackground(new BitmapDrawable(resource, scaledBitmap));
@@ -104,7 +104,7 @@ public class GameActivity extends AppCompatActivity {
         lockButtonSizes();
         int newWidth = btn.getWidth();
         int newHeight = btn.getHeight();
-        Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.jackolantern1);
+        Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.gem1);
         Bitmap scaledBitmap = Bitmap.createScaledBitmap(originalBitmap, newWidth, newHeight, true);
         Resources resource = getResources();
         btn.setBackground(new BitmapDrawable(resource, scaledBitmap));
