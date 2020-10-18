@@ -16,19 +16,36 @@ import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.assignment3.model.GemMine;
 
 public class GameActivity extends AppCompatActivity {
 
     private static int row_amount;
     private static int col_amount;
-    Button[][] buttons;
+    private Button[][] buttons;
+    private GemMine gemMine;
+    private int scannedTotal=0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
         row_amount = OptionsActivity.getRowCount(this);
         col_amount = OptionsActivity.getColCount(this);
+        int gem_amount = OptionsActivity.getGemAmount(this);
         buttons = new Button[row_amount][col_amount];
+        gemMine = new GemMine(row_amount, col_amount, gem_amount);
+        //put in another method later
+        TextView foundTV = (TextView) findViewById(R.id.txtFound);
+        String found = "Found "+ gemMine.getGemsFound() + " of " + gemMine.getTotalGems() +
+                " gems.";
+        foundTV.setText(found);
+
+        TextView scannedTV = (TextView) findViewById(R.id.txtScanned);
+        String scanned = "# Scans used: "+ scannedTotal;
+        scannedTV.setText(scanned);
 
         populateButtons();
 
@@ -52,7 +69,6 @@ public class GameActivity extends AppCompatActivity {
                 final Button btn = new Button(this);
                 TableRow.LayoutParams layoutParams = new TableRow.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.MATCH_PARENT, 1.0f);
                 btn.setLayoutParams(layoutParams);
-                btn.setText("" + col + "," + row);
                 btn.setPadding(0, 0, 0, 0);
                 btn.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -93,7 +109,68 @@ public class GameActivity extends AppCompatActivity {
         Resources resource = getResources();
         btn.setBackground(new BitmapDrawable(resource, scaledBitmap));
 
-        btn.setText("" + col);
+        //do stuff
+        scanMine(row,col,btn);
+        updateTxtUI();
+    }
+
+
+
+    private void scanMine(int row, int col, Button btn) {
+        //check if it's a mine
+        boolean check = gemMine.isGem(row, col);
+
+        //if rock is not a gem, or alr found, show how many nearby
+        if(!check || gemMine.isFound(row, col)){
+            int nearby = gemMine.nearby(row, col);
+            //display it
+            btn.setText("" + nearby);
+            gemMine.setScanned(row,col);
+            scannedTotal++;
+
+        }
+
+        //if rock is a gem, increment gemsFound, update data
+        else{
+            gemMine.gemFound(row,col);
+
+            //if gemsFound = total gems, end game
+            if(gemMine.getTotalGems() == gemMine.getGemsFound()){
+                Toast.makeText(this, "End game", Toast.LENGTH_SHORT).show();
+            }
+            //display found
+            btn.setText("Mine");
+            //update ui to decrease
+            updateMineUI();
+        }
+    }
+
+    private void updateMineUI() {
+        Button btn;
+        for(int row = 0; row < row_amount;row++){
+            for(int col = 0; col < col_amount;col++){
+                if(gemMine.isScanned(row,col)){
+                    int nearby = gemMine.nearby(row, col);
+                    btn = buttons[row][col];
+                    btn.setText(""+ nearby);
+
+                }
+            }
+        }
+
+    }
+
+    private void updateTxtUI() {
+        //update gems found
+        TextView tv = (TextView) findViewById(R.id.txtFound);
+        String found = "Found "+ gemMine.getGemsFound() + " of " + gemMine.getTotalGems() +
+                " gems.";
+        tv.setText(found);
+
+        //update # scanned
+        tv = (TextView) findViewById(R.id.txtScanned);
+        String scanned = "# Scans used: "+ scannedTotal;
+        tv.setText(scanned);
     }
 
     private void lockButtonSizes() {
