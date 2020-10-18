@@ -26,7 +26,7 @@ public class GameActivity extends AppCompatActivity {
     private static int col_amount;
     private Button[][] buttons;
     private GemMine gemMine;
-    //private int gemsFound = 0;
+    private int scannedTotal=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +37,15 @@ public class GameActivity extends AppCompatActivity {
         int gem_amount = OptionsActivity.getGemAmount(this);
         buttons = new Button[row_amount][col_amount];
         gemMine = new GemMine(row_amount, col_amount, gem_amount);
+        //put in another method later
+        TextView foundTV = (TextView) findViewById(R.id.txtFound);
+        String found = "Found "+ gemMine.getGemsFound() + " of " + gemMine.getTotalGems() +
+                " gems.";
+        foundTV.setText(found);
+
+        TextView scannedTV = (TextView) findViewById(R.id.txtScanned);
+        String scanned = "# Scans used: "+ scannedTotal;
+        scannedTV.setText(scanned);
 
         populateButtons();
 
@@ -60,7 +69,6 @@ public class GameActivity extends AppCompatActivity {
                 final Button btn = new Button(this);
                 TableRow.LayoutParams layoutParams = new TableRow.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.MATCH_PARENT, 1.0f);
                 btn.setLayoutParams(layoutParams);
-                btn.setText("" + col + "," + row);
                 btn.setPadding(0, 0, 0, 0);
                 btn.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -102,9 +110,11 @@ public class GameActivity extends AppCompatActivity {
         btn.setBackground(new BitmapDrawable(resource, scaledBitmap));
 
         //do stuff
-        //btn.setText("" + col);
         scanMine(row,col,btn);
+        updateTxtUI();
     }
+
+
 
     private void scanMine(int row, int col, Button btn) {
         //check if it's a mine
@@ -116,6 +126,7 @@ public class GameActivity extends AppCompatActivity {
             //display it
             btn.setText("" + nearby);
             gemMine.setScanned(row,col);
+            scannedTotal++;
 
         }
 
@@ -146,6 +157,20 @@ public class GameActivity extends AppCompatActivity {
                 }
             }
         }
+
+    }
+
+    private void updateTxtUI() {
+        //update gems found
+        TextView tv = (TextView) findViewById(R.id.txtFound);
+        String found = "Found "+ gemMine.getGemsFound() + " of " + gemMine.getTotalGems() +
+                " gems.";
+        tv.setText(found);
+
+        //update # scanned
+        tv = (TextView) findViewById(R.id.txtScanned);
+        String scanned = "# Scans used: "+ scannedTotal;
+        tv.setText(scanned);
     }
 
     private void lockButtonSizes() {

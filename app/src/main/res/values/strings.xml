@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Assignment3</string>
+    <string name="txtFound"> </string>
+    <string name="txtScanned"> </string>
 </resources>
