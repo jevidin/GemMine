@@ -44,7 +44,7 @@ public class OptionsActivity extends AppCompatActivity {
         }
     }
     private static final String GEMS_PREF_NAME = "amount of gems";
-    static private int getGemAmount(Context context) {
+    static public int getGemAmount(Context context) {
         SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         int defaultAmount = context.getResources().getInteger(R.integer.default_gems);
         return prefs.getInt(GEMS_PREF_NAME, defaultAmount);
