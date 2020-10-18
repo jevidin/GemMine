@@ -72,7 +72,7 @@ public class OptionsActivity extends AppCompatActivity {
                 }
             });
             group.addView(btn);
-            //FIXXX
+
             String gameSize = getRowCount(this) + " x " + getColCount(this);
             if(selected_game_size.equals(gameSize)){
                 btn.setChecked(true);
