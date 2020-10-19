@@ -14,7 +14,11 @@
         android:layout_marginStart="68dp"
         android:layout_marginTop="84dp"
         android:background="@drawable/sign1"
+        android:fontFamily="casual"
         android:text="Play"
+        android:textColor="#BD4104"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,22 +27,30 @@
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:layout_marginTop="20dp"
+        android:background="@drawable/sign1"
+        android:fontFamily="casual"
         android:text="Options"
+        android:textColor="#BD4104"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/btn_play"
         app:layout_constraintStart_toStartOf="@+id/btn_play"
-        app:layout_constraintTop_toBottomOf="@+id/btn_play"
-        android:background="@drawable/sign1"/>
+        app:layout_constraintTop_toBottomOf="@+id/btn_play" />
 
     <Button
         android:id="@+id/btn_help"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:layout_marginTop="20dp"
+        android:background="@drawable/sign1"
+        android:fontFamily="casual"
         android:text="Help"
+        android:textColor="#BD4104"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/btn_options"
         app:layout_constraintStart_toStartOf="@+id/btn_options"
-        app:layout_constraintTop_toBottomOf="@+id/btn_options"
-        android:background="@drawable/sign1"/>
+        app:layout_constraintTop_toBottomOf="@+id/btn_options" />
 
     <ImageView
         android:id="@+id/imageView"

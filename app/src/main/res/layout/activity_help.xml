@@ -24,11 +24,12 @@
 
     <TextView
         android:id="@+id/txt_how_to_play"
-        android:layout_width="105dp"
+        android:layout_width="115dp"
         android:layout_height="24dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="25dp"
         android:background="@drawable/sign1"
+        android:fontFamily="casual"
         android:text=" How to Play"
         android:textColor="#BD4104"
         android:textSize="18sp"
@@ -41,8 +42,10 @@
         android:layout_height="48dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/sign1"
+        android:fontFamily="casual"
         android:text="back"
         android:textColor="#BD4104"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/help_text"
         app:layout_constraintTop_toBottomOf="@+id/help_text" />
 

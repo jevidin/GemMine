@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -10,14 +10,19 @@
 
     <Button
         android:id="@+id/btn_back"
-        android:layout_width="88dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="544dp"
-        android:layout_marginTop="260dp"
+        android:layout_width="114dp"
+        android:layout_height="45dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="522dp"
+        android:layout_marginEnd="84dp"
+        android:layout_marginBottom="57dp"
         android:background="@drawable/sign1"
         android:fontFamily="casual"
         android:text="back to main menu"
         android:textColor="#BD4104"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,8 +30,10 @@
         android:id="@+id/txt_win"
         android:layout_width="165dp"
         android:layout_height="41dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:layout_marginStart="248dp"
-        android:layout_marginTop="92dp"
+        android:layout_marginTop="103dp"
         android:background="@drawable/sign1"
         android:fontFamily="casual"
         android:text=" YOU WIN!!"
@@ -36,4 +43,18 @@
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/txt_score"
+        android:layout_width="175dp"
+        android:layout_height="20dp"
+        android:layout_below="@+id/txt_win"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="243dp"
+        android:layout_marginTop="42dp"
+        android:background="@drawable/sign1"
+        android:fontFamily="casual"
+        android:text="  Number of scans used:"
+        android:textColor="#BD4104"
+        android:textStyle="bold" />
+</RelativeLayout>

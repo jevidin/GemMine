@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.FragmentManager;
 
+import android.app.Dialog;
 import android.app.VoiceInteractor;
 import android.content.Context;
 import android.content.Intent;
@@ -15,6 +16,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -29,7 +31,7 @@ public class GameActivity extends AppCompatActivity {
     private static int col_amount;
     private Button[][] buttons;
     private GemMine gemMine;
-    private int scannedTotal=0;
+    private int scannedTotal = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -141,9 +143,23 @@ public class GameActivity extends AppCompatActivity {
 
             //if gemsFound = total gems, end game
             if(gemMine.getTotalGems() == gemMine.getGemsFound()){
-                FragmentManager manager = getSupportFragmentManager();
-                CongratulationsFragment dialog = new CongratulationsFragment();
-                dialog.show(manager, "MessageDialog");
+
+                View view = getLayoutInflater().inflate(R.layout.congratulations_layout, null);
+                final Dialog dialog = new Dialog(this, android.R.style.Theme_DeviceDefault_Light_NoActionBar_Fullscreen);
+                dialog.setContentView(view);
+                TextView scoreTV = view.findViewById(R.id.txt_score);
+                scoreTV.setText(" Number of scans used: " + scannedTotal);
+                dialog.show();
+                Button btn2 = view.findViewById(R.id.btn_back);
+                btn2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        finish();
+                        dialog.dismiss();
+
+                    }
+                });
+
 
             }
 
@@ -169,13 +185,13 @@ public class GameActivity extends AppCompatActivity {
 
     private void updateTxtUI() {
         //update gems found
-        TextView tv = (TextView) findViewById(R.id.txtFound);
+        TextView tv = findViewById(R.id.txtFound);
         String found = "Found "+ gemMine.getGemsFound() + " of " + gemMine.getTotalGems() +
                 " gems.";
         tv.setText(found);
 
         //update # scanned
-        tv = (TextView) findViewById(R.id.txtScanned);
+        tv = findViewById(R.id.txtScanned);
         String scanned = "# Scans used: "+ scannedTotal;
         tv.setText(scanned);
     }
