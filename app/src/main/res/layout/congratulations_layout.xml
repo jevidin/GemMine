@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:screenOrientation="landscape"
+    android:background="@drawable/cave2">
+
+    <Button
+        android:id="@+id/btn_back"
+        android:layout_width="88dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="544dp"
+        android:layout_marginTop="260dp"
+        android:background="@drawable/sign1"
+        android:fontFamily="casual"
+        android:text="back to main menu"
+        android:textColor="#BD4104"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_win"
+        android:layout_width="165dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="248dp"
+        android:layout_marginTop="92dp"
+        android:background="@drawable/sign1"
+        android:fontFamily="casual"
+        android:text=" YOU WIN!!"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#BD4104"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

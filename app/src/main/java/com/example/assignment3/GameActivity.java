@@ -1,6 +1,8 @@
 package com.example.assignment3;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.FragmentManager;
 
 import android.app.VoiceInteractor;
 import android.content.Context;
@@ -12,6 +14,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewTreeObserver;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -102,12 +105,7 @@ public class GameActivity extends AppCompatActivity {
         Button btn = buttons[row][col];
         //lock button sizes:
         lockButtonSizes();
-        int newWidth = btn.getWidth();
-        int newHeight = btn.getHeight();
-        Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.gem1);
-        Bitmap scaledBitmap = Bitmap.createScaledBitmap(originalBitmap, newWidth, newHeight, true);
-        Resources resource = getResources();
-        btn.setBackground(new BitmapDrawable(resource, scaledBitmap));
+
 
         //do stuff
         scanMine(row,col,btn);
@@ -134,12 +132,21 @@ public class GameActivity extends AppCompatActivity {
         else{
             gemMine.gemFound(row,col);
 
+            int newWidth = btn.getWidth();
+            int newHeight = btn.getHeight();
+            Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.gem1);
+            Bitmap scaledBitmap = Bitmap.createScaledBitmap(originalBitmap, newWidth, newHeight, true);
+            Resources resource = getResources();
+            btn.setBackground(new BitmapDrawable(resource, scaledBitmap));
+
             //if gemsFound = total gems, end game
             if(gemMine.getTotalGems() == gemMine.getGemsFound()){
-                Toast.makeText(this, "End game", Toast.LENGTH_SHORT).show();
+                FragmentManager manager = getSupportFragmentManager();
+                CongratulationsFragment dialog = new CongratulationsFragment();
+                dialog.show(manager, "MessageDialog");
+
             }
-            //display found
-            btn.setText("Mine");
+
             //update ui to decrease
             updateMineUI();
         }
