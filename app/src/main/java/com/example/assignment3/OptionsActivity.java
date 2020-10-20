@@ -12,16 +12,20 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.example.assignment3.model.Options;
+
 import java.util.ArrayList;
 
 public class OptionsActivity extends AppCompatActivity {
 
+    public static Options optionsInstance;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_options);
         setupGameSizeRadioButtons();
         setupNumberOfGemsRadioButtons();
+        optionsInstance = Options.getInstance();
     }
 
     private void setupNumberOfGemsRadioButtons() {
@@ -38,19 +42,20 @@ public class OptionsActivity extends AppCompatActivity {
                 }
             });
             group.addView(btn);
-            if(selected_gem_amount == getGemAmount(this)){
+            if(selected_gem_amount == getGemAmountSharedPref(this)){
                 btn.setChecked(true);
             }
         }
     }
     private static final String GEMS_PREF_NAME = "amount of gems";
-    static public int getGemAmount(Context context) {
+    static public int getGemAmountSharedPref(Context context) {
         SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         int defaultAmount = context.getResources().getInteger(R.integer.default_gems);
         return prefs.getInt(GEMS_PREF_NAME, defaultAmount);
     }
 
     private void saveGemAmount(int gemAmount) {
+        optionsInstance.setGems(gemAmount);
         SharedPreferences prefs = this.getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putInt(GEMS_PREF_NAME, gemAmount);
@@ -73,7 +78,7 @@ public class OptionsActivity extends AppCompatActivity {
             });
             group.addView(btn);
 
-            String gameSize = getRowCount(this) + " x " + getColCount(this);
+            String gameSize = getRowCountSharedPref(this) + " x " + getColCountSharedPref(this);
             if(selected_game_size.equals(gameSize)){
                 btn.setChecked(true);
             }
@@ -85,36 +90,38 @@ public class OptionsActivity extends AppCompatActivity {
     private static final String COL_PREF_NAME = "Column Amount";
     private static final String PREFS_NAME = "AppPrefs";
     private void saveGameSize(String selected_game_size) {
-        int rows;
-        int cols;
+        int row_count;
+        int col_count;
         switch(selected_game_size){
             case "5 x 10":
-                rows = 5;
-                cols = 10;
+                row_count = 5;
+                col_count = 10;
                 break;
             case "6 x 15":
-                rows = 6;
-                cols = 15;
+                row_count = 6;
+                col_count = 15;
                 break;
             default:
-                rows = 4;
-                cols = 6;
+                row_count = 4;
+                col_count = 6;
                 break;
         }
+        optionsInstance.setRows(row_count);
+        optionsInstance.setCols(col_count);
         SharedPreferences prefs = this.getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
-        editor.putInt(ROW_PREF_NAME, rows);
-        editor.putInt(COL_PREF_NAME, cols);
+        editor.putInt(ROW_PREF_NAME, row_count);
+        editor.putInt(COL_PREF_NAME, col_count);
         editor.apply();
     }
 
-    static public int getRowCount(Context context){
+    static public int getRowCountSharedPref(Context context){
         SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         int defaultRows = context.getResources().getInteger(R.integer.default_rows);
 
         return prefs.getInt(ROW_PREF_NAME, defaultRows);
     }
-    static public int getColCount(Context context){
+    static public int getColCountSharedPref(Context context){
         SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         int defaultCols = context.getResources().getInteger(R.integer.default_cols);
 

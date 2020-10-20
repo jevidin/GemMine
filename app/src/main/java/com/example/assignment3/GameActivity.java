@@ -11,6 +11,8 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.View;
@@ -24,6 +26,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.assignment3.model.GemMine;
+import com.example.assignment3.model.Options;
 
 public class GameActivity extends AppCompatActivity {
 
@@ -32,31 +35,30 @@ public class GameActivity extends AppCompatActivity {
     private Button[][] buttons;
     private GemMine gemMine;
     private int scannedTotal = 0;
+    private Options optionsInstance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
-        row_amount = OptionsActivity.getRowCount(this);
-        col_amount = OptionsActivity.getColCount(this);
-        int gem_amount = OptionsActivity.getGemAmount(this);
+        optionsInstance = Options.getInstance();
+        row_amount = optionsInstance.getRows();
+        col_amount = optionsInstance.getCols();
+        int gem_amount = optionsInstance.getGems();
         buttons = new Button[row_amount][col_amount];
         gemMine = new GemMine(row_amount, col_amount, gem_amount);
         //put in another method later
-        TextView foundTV = (TextView) findViewById(R.id.txtFound);
+        TextView foundTV = findViewById(R.id.txtFound);
         String found = "Found "+ gemMine.getGemsFound() + " of " + gemMine.getTotalGems() +
                 " gems.";
         foundTV.setText(found);
-
-        TextView scannedTV = (TextView) findViewById(R.id.txtScanned);
+        TextView scannedTV = findViewById(R.id.txtScanned);
         String scanned = "# Scans used: "+ scannedTotal;
         scannedTV.setText(scanned);
 
         populateButtons();
 
     }
-
-
 
     private void populateButtons() {
         TableLayout table = findViewById(R.id.table_for_buttons);
@@ -72,7 +74,10 @@ public class GameActivity extends AppCompatActivity {
                 final int FINAL_COL = col;
                 final int FINAL_ROW = row;
                 final Button btn = new Button(this);
-                TableRow.LayoutParams layoutParams = new TableRow.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.MATCH_PARENT, 1.0f);
+                TableRow.LayoutParams layoutParams = new TableRow.LayoutParams(
+                        TableLayout.LayoutParams.MATCH_PARENT,
+                        TableLayout.LayoutParams.MATCH_PARENT,
+                        1.0f);
                 btn.setLayoutParams(layoutParams);
                 btn.setPadding(0, 0, 0, 0);
                 btn.setOnClickListener(new View.OnClickListener() {
@@ -94,7 +99,6 @@ public class GameActivity extends AppCompatActivity {
                         btn.setBackground(new BitmapDrawable(resource, scaledBitmap));
                     }
                 });
-
                 tableRow.addView(btn);
                 buttons[row][col] = btn;
             }
@@ -107,8 +111,6 @@ public class GameActivity extends AppCompatActivity {
         Button btn = buttons[row][col];
         //lock button sizes:
         lockButtonSizes();
-
-
         //do stuff
         scanMine(row,col,btn);
         updateTxtUI();
@@ -143,7 +145,7 @@ public class GameActivity extends AppCompatActivity {
 
             //if gemsFound = total gems, end game
             if(gemMine.getTotalGems() == gemMine.getGemsFound()){
-
+                // code for fullscreen dialog partially taken from https://www.youtube.com/watch?v=ImV6y2K76qE
                 View view = getLayoutInflater().inflate(R.layout.congratulations_layout, null);
                 final Dialog dialog = new Dialog(this, android.R.style.Theme_DeviceDefault_Light_NoActionBar_Fullscreen);
                 dialog.setContentView(view);
@@ -160,14 +162,12 @@ public class GameActivity extends AppCompatActivity {
                     }
                 });
 
-
             }
 
             //update ui to decrease
             updateMineUI();
         }
     }
-
     private void updateMineUI() {
         Button btn;
         for(int row = 0; row < row_amount;row++){
@@ -200,6 +200,9 @@ public class GameActivity extends AppCompatActivity {
         for (int row = 0; row < row_amount; row++){
             for(int col = 0; col < col_amount; col++){
                 Button btn = buttons[row][col];
+                //btn.setTextSize(11);
+                btn.setTextColor(Color.parseColor("#BD4104"));
+
                 int width = btn.getWidth();
                 btn.setMinWidth(width);
                 btn.setMaxWidth(width);
