@@ -28,17 +28,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         displayWelcome();
         setContentView(R.layout.activity_main);
-        //testAnim();
         setupPlayButton();
         setupOptionsButton();
         setupHelpButton();
     }
 
-    private void testAnim() {
-        ImageView test = (ImageView)findViewById(R.id.imageView);
-        Animation bounceTitle = AnimationUtils.loadAnimation(MainActivity.this, R.anim.blink_anim);
-        test.startAnimation(bounceTitle);
-    }
+
 
     private void displayWelcome() {
         // code for fullscreen dialog partially taken from https://www.youtube.com/watch?v=ImV6y2K76qE
