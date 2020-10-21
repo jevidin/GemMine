@@ -25,7 +25,7 @@ public class OptionsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_options);
         setupGameSizeRadioButtons();
         setupNumberOfGemsRadioButtons();
-        optionsInstance = Options.getInstance();
+        optionsInstance = Options.getInstance(this);
     }
 
     private void setupNumberOfGemsRadioButtons() {

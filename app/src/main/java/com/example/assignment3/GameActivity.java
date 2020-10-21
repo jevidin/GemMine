@@ -41,7 +41,7 @@ public class GameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
-        optionsInstance = Options.getInstance();
+        optionsInstance = Options.getInstance(this);
         row_amount = optionsInstance.getRows();
         col_amount = optionsInstance.getCols();
         int gem_amount = optionsInstance.getGems();
