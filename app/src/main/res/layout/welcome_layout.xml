@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/cave2">
+
+
+    <ImageView
+        android:id="@+id/imgTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="40dp"
+        android:contentDescription="Application TItle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/title" />
+
+    <ImageView
+        android:id="@+id/imgRails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="136dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgTitle"
+        app:srcCompat="@drawable/rail_mine" />
+
+    <ImageView
+        android:id="@+id/imgMinecart"
+        android:layout_width="132dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginBottom="76dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imgRails"
+        app:layout_constraintStart_toStartOf="@+id/imgRails"
+        app:srcCompat="@drawable/minecarts" />
+
+    <ImageView
+        android:id="@+id/imgAuthor"
+        android:layout_width="255dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="12dp"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="@+id/imgTitle"
+        app:layout_constraintHorizontal_bias="0.513"
+        app:layout_constraintStart_toStartOf="@+id/imgTitle"
+        app:layout_constraintTop_toBottomOf="@+id/imgTitle"
+        app:srcCompat="@drawable/sign1" />
+
+    <TextView
+        android:id="@+id/txtAuthor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:text="Authors: Jessica Li and Sean Tam"
+        android:textAlignment="center"
+        android:textColor="#494545"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/imgAuthor"
+        app:layout_constraintEnd_toEndOf="@+id/imgAuthor"
+        app:layout_constraintStart_toStartOf="@+id/imgAuthor"
+        app:layout_constraintTop_toTopOf="@+id/imgAuthor" />
+
+    <ImageView
+        android:id="@+id/imgSkip"
+        android:layout_width="161dp"
+        android:layout_height="33dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="5dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/sign1" />
+
+    <TextView
+        android:id="@+id/txtSkip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:text="Tap anywhere to skip"
+        android:textAlignment="center"
+        android:textColor="#494545"
+        app:layout_constraintBottom_toBottomOf="@+id/imgSkip"
+        app:layout_constraintEnd_toEndOf="@+id/imgSkip"
+        app:layout_constraintStart_toStartOf="@+id/imgSkip"
+        app:layout_constraintTop_toTopOf="@+id/imgSkip" />
+</androidx.constraintlayout.widget.ConstraintLayout>

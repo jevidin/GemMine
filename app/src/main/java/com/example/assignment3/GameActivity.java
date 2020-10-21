@@ -200,8 +200,8 @@ public class GameActivity extends AppCompatActivity {
         for (int row = 0; row < row_amount; row++){
             for(int col = 0; col < col_amount; col++){
                 Button btn = buttons[row][col];
-                //btn.setTextSize(11);
-                btn.setTextColor(Color.parseColor("#BD4104"));
+                btn.setTextSize(20);
+                btn.setTextColor(Color.parseColor("#a33a07"));
 
                 int width = btn.getWidth();
                 btn.setMinWidth(width);

@@ -7,47 +7,61 @@
     tools:context=".HelpActivity"
     android:background="@drawable/cave1">
 
+    <ImageView
+        android:id="@+id/help_Img"
+        android:layout_width="668dp"
+        android:layout_height="372dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="16dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/sign1" />
+
     <TextView
         android:id="@+id/help_text"
-        android:layout_width="636dp"
-        android:layout_height="168dp"
-        android:layout_marginTop="10dp"
+        android:layout_width="605dp"
+        android:layout_height="wrap_content"
 
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="15dp"
         android:lineSpacingExtra="8sp"
-        android:text="Welcome to the Gem Mine! To begin playing, tap on the Play button on the main menu and you will be taken to the main game. Tap on a rock to mine it, if there's a gem in the rock then you have found a gem! If the rock was empty, the rock will show how many gems are in its rows and columns combined. The objective of the game is to find all the gems while tapping the fewest number of empty rocks. You may also tap on a gem to reveal how many gems are in its row and column. You can also change the number of rocks you have to search through as well as the number of hidden gems in the rocks by tapping on the Options button on the main menu."
-        android:textAlignment="textStart"
+        android:text="Welcome to the Gem Mine! To begin playing, tap on the Play button on the Main Menu and you will be taken to the main game. Tap on a rock to mine it, if there's a gem in the rock then you have found a gem! If the rock is empty, it will scan and show how many gems are in its rows and columns combined. You may also tap on a revealed gem to scan. The objective is to find all the gems with the fewest scans possible. To change the number of rocks hidden , tap on the Options button on the Main Menu."
+        android:textAlignment="viewStart"
         android:textAllCaps="false"
         android:textColor="#BD4104"
         android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@+id/txt_how_to_play"
+        app:layout_constraintStart_toStartOf="@+id/help_Img"
         app:layout_constraintTop_toBottomOf="@+id/txt_how_to_play" />
 
     <TextView
         android:id="@+id/txt_how_to_play"
         android:layout_width="115dp"
         android:layout_height="24dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/sign1"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="50dp"
         android:fontFamily="casual"
         android:text=" How to Play"
         android:textColor="#BD4104"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/help_Img" />
 
     <Button
         android:id="@+id/btn_back"
         android:layout_width="88dp"
         android:layout_height="48dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="45dp"
         android:background="@drawable/sign1"
         android:fontFamily="casual"
         android:text="back"
         android:textColor="#BD4104"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/help_text"
-        app:layout_constraintTop_toBottomOf="@+id/help_text" />
+        app:layout_constraintBottom_toBottomOf="@+id/help_Img"
+        app:layout_constraintEnd_toEndOf="@+id/help_Img" />
 
     <TextView
         android:id="@+id/txt_about"
@@ -59,5 +73,17 @@
         android:textSize="12sp"
         app:layout_constraintStart_toStartOf="@+id/help_text"
         app:layout_constraintTop_toBottomOf="@+id/help_text" />
+
+    <TextView
+        android:id="@+id/txt_resources"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:text="Resources: "
+        android:textColor="#BD4104"
+        app:layout_constraintStart_toStartOf="@+id/txt_about"
+        app:layout_constraintTop_toBottomOf="@+id/txt_about" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

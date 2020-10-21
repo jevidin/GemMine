@@ -8,35 +8,70 @@
     android:screenOrientation="landscape"
     android:background="@drawable/cave2">
 
+    <ImageView
+        android:id="@+id/img_score"
+        android:layout_width="206dp"
+        android:layout_height="25dp"
+        android:layout_below="@+id/img_win"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="231dp"
+        android:layout_marginTop="-19dp"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/sign1" />
+
     <Button
         android:id="@+id/btn_back"
-        android:layout_width="114dp"
-        android:layout_height="45dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
+        android:layout_width="126dp"
+        android:layout_height="67dp"
+        android:layout_below="@+id/img_win"
+        android:layout_alignStart="@+id/txt_score"
+        android:layout_alignEnd="@+id/txt_score"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="522dp"
-        android:layout_marginEnd="84dp"
-        android:layout_marginBottom="57dp"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="27dp"
+        android:layout_marginBottom="91dp"
         android:background="@drawable/sign1"
         android:fontFamily="casual"
-        android:text="back to main menu"
+        android:text="back to\n main menu"
         android:textColor="#BD4104"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@id/img_score"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/winGemDisplay"
+        android:layout_width="192dp"
+        android:layout_height="188dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="229dp"
+        android:layout_marginTop="20dp"
+        app:srcCompat="@drawable/gem1" />
+
+    <ImageView
+        android:id="@+id/img_win"
+        android:layout_width="181dp"
+        android:layout_height="107dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="243dp"
+        android:layout_marginTop="133dp"
+        app:srcCompat="@drawable/sign1" />
 
     <TextView
         android:id="@+id/txt_win"
         android:layout_width="165dp"
         android:layout_height="41dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="248dp"
-        android:layout_marginTop="103dp"
-        android:background="@drawable/sign1"
+        android:layout_alignStart="@+id/img_win"
+        android:layout_alignTop="@+id/img_win"
+        android:layout_alignEnd="@+id/img_win"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="33dp"
+        android:layout_marginEnd="8dp"
         android:fontFamily="casual"
-        android:text=" YOU WIN!!"
+        android:text="YOU WIN!!"
+        android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="#BD4104"
         android:textSize="30sp"
@@ -48,13 +83,21 @@
         android:id="@+id/txt_score"
         android:layout_width="180dp"
         android:layout_height="20dp"
-        android:layout_below="@+id/txt_win"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="243dp"
-        android:layout_marginTop="42dp"
-        android:background="@drawable/sign1"
+        android:layout_alignStart="@+id/img_score"
+        android:layout_alignTop="@+id/img_score"
+        android:layout_alignEnd="@+id/img_score"
+        android:layout_alignBottom="@+id/img_score"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="13dp"
+        android:layout_marginBottom="1dp"
         android:fontFamily="casual"
-        android:text="  Number of scans used:"
+        android:text="Number of scans used:"
+        android:textAlignment="center"
         android:textColor="#BD4104"
         android:textStyle="bold" />
+
+
+
+
 </RelativeLayout>
