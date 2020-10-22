@@ -32,6 +32,7 @@ public class OptionsActivity extends AppCompatActivity {
         RadioGroup group = findViewById(R.id.radio_group_gems);
         int[] number_of_gems_array = getResources().getIntArray(R.array.number_of_gems);
         for(int i = 0; i < number_of_gems_array.length; i++){
+            final int index = i;
             final int selected_gem_amount = number_of_gems_array[i];
             RadioButton btn = new RadioButton(this);
             btn.setText("" + selected_gem_amount);
@@ -39,6 +40,7 @@ public class OptionsActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     saveGemAmount(selected_gem_amount);
+                    //optionsInstance.setScoresIndex(index);
                 }
             });
             group.addView(btn);

@@ -36,6 +36,7 @@ public class GameActivity extends AppCompatActivity {
     private GemMine gemMine;
     private int scannedTotal = 0;
     private Options optionsInstance;
+    private int highScore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,19 +46,24 @@ public class GameActivity extends AppCompatActivity {
         row_amount = optionsInstance.getRows();
         col_amount = optionsInstance.getCols();
         int gem_amount = optionsInstance.getGems();
+        highScore = optionsInstance.getScore();
         buttons = new Button[row_amount][col_amount];
         gemMine = new GemMine(row_amount, col_amount, gem_amount);
-        //put in another method later
+        displayText();
+
+        populateButtons();
+
+    }
+
+    private void displayText() {
         TextView foundTV = findViewById(R.id.txtFound);
         String found = "Found "+ gemMine.getGemsFound() + " of " + gemMine.getTotalGems() +
                 " gems.";
         foundTV.setText(found);
+        //highScore = optionsInstance.getScore();
         TextView scannedTV = findViewById(R.id.txtScanned);
-        String scanned = "# Scans used: "+ scannedTotal;
+        String scanned = "Scans: "+ scannedTotal + " Best Score: " + highScore;
         scannedTV.setText(scanned);
-
-        populateButtons();
-
     }
 
     private void populateButtons() {
@@ -122,6 +128,10 @@ public class GameActivity extends AppCompatActivity {
         //check if it's a mine
         boolean check = gemMine.isGem(row, col);
 
+        if(gemMine.isScanned(row, col)){
+            return;
+        }
+
         //if rock is not a gem, or alr found, show how many nearby
         if(!check || gemMine.isFound(row, col)){
             int nearby = gemMine.nearby(row, col);
@@ -145,12 +155,23 @@ public class GameActivity extends AppCompatActivity {
 
             //if gemsFound = total gems, end game
             if(gemMine.getTotalGems() == gemMine.getGemsFound()){
+                optionsInstance.setScore(scannedTotal, this);
+                highScore = optionsInstance.getScore();
                 // code for fullscreen dialog partially taken from https://www.youtube.com/watch?v=ImV6y2K76qE
                 View view = getLayoutInflater().inflate(R.layout.congratulations_layout, null);
                 final Dialog dialog = new Dialog(this, android.R.style.Theme_DeviceDefault_Light_NoActionBar_Fullscreen);
                 dialog.setContentView(view);
+
+                String scoreText = getString(R.string.scans_used);
+                scoreText += scannedTotal;
                 TextView scoreTV = view.findViewById(R.id.txt_score);
-                scoreTV.setText(" Number of scans used: " + scannedTotal);
+                scoreTV.setText(scoreText);
+
+                String highscoreText = getString(R.string.highscore);
+                highscoreText += highScore;
+                TextView highscoreTV = view.findViewById(R.id.txt_highscore);
+                highscoreTV.setText(highscoreText);
+
                 dialog.show();
                 Button btn2 = view.findViewById(R.id.btn_back);
                 btn2.setOnClickListener(new View.OnClickListener() {
@@ -192,7 +213,7 @@ public class GameActivity extends AppCompatActivity {
 
         //update # scanned
         tv = findViewById(R.id.txtScanned);
-        String scanned = "# Scans used: "+ scannedTotal;
+        String scanned = "Scans: "+ scannedTotal + " Best Score: " + highScore;
         tv.setText(scanned);
     }
 
