@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
@@ -36,6 +37,7 @@ public class OptionsActivity extends AppCompatActivity {
             final int selected_gem_amount = number_of_gems_array[i];
             RadioButton btn = new RadioButton(this);
             btn.setText("" + selected_gem_amount);
+            btn.setTextColor(Color.parseColor("#BD4104"));
             btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -70,6 +72,7 @@ public class OptionsActivity extends AppCompatActivity {
         for (int i = 0; i < game_sizes_array.length; i++){
             final String selected_game_size = game_sizes_array[i];
             RadioButton btn = new RadioButton(this);
+            btn.setTextColor(Color.parseColor("#BD4104"));
             btn.setText(selected_game_size);
             btn.setOnClickListener(new View.OnClickListener() {
                 @Override

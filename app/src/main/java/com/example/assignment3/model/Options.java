@@ -64,10 +64,6 @@ public class Options {
         return row_count;
     }
 
-//    public void setScoresIndex(int i){
-//        gemsIndex = i;
-//    }
-
     public int getScore(){
         return scores[sizeIndex][gemsIndex];
     }

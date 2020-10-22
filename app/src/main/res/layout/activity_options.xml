@@ -7,7 +7,17 @@
     tools:context=".OptionsActivity"
     android:background="@drawable/cave1">
 
-
+    <ImageView
+        android:id="@+id/img_size"
+        android:layout_width="619dp"
+        android:layout_height="348dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="25dp"
+        android:contentDescription="@string/wooden_bg"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/sign1" />
 
     <RadioGroup
         android:id="@+id/radio_group_game_size"
@@ -22,24 +32,22 @@
         android:id="@+id/txt_board_size"
         android:layout_width="155dp"
         android:layout_height="29dp"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="44dp"
-        android:background="@drawable/sign1"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="60dp"
         android:fontFamily="casual"
-        android:text=" Game Board Size:"
+        android:text="@string/game_board_size"
         android:textColor="#BD4104"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/img_size"
+        app:layout_constraintTop_toTopOf="@+id/img_size" />
 
     <TextView
         android:id="@+id/txt_gems"
         android:layout_width="155dp"
         android:layout_height="29dp"
-        android:layout_marginStart="250dp"
-        android:background="@drawable/sign1"
+        android:layout_marginStart="180dp"
         android:fontFamily="casual"
-        android:text=" Number of gems:"
+        android:text="@string/num_of_gems"
         android:textColor="#BD4104"
         android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@+id/txt_board_size"
@@ -52,6 +60,7 @@
         android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="@+id/txt_gems"
         app:layout_constraintTop_toBottomOf="@+id/txt_gems" />
+
 
 
 
