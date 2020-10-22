@@ -53,13 +53,84 @@
         app:layout_constraintTop_toBottomOf="@+id/btn_options" />
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="419dp"
-        android:layout_height="268dp"
-        android:layout_marginTop="84dp"
-        android:layout_marginEnd="16dp"
+        android:id="@+id/imageGem1"
+        android:layout_width="290dp"
+        android:layout_height="217dp"
+        android:layout_marginBottom="120dp"
+        android:contentDescription="@string/gem"
+        app:layout_constraintBottom_toBottomOf="@+id/imageMinecart"
+        app:layout_constraintEnd_toEndOf="@+id/imageMinecart"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/imageMinecart"
+        app:srcCompat="@drawable/gem1"
+        />
+
+    <ImageView
+        android:id="@+id/imageMinecart"
+        android:layout_width="313dp"
+        android:layout_height="214dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="8dp"
+        android:contentDescription="@string/gem"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/minecarts" />
+
+    <ImageView
+        android:id="@+id/imageRock1"
+        android:layout_width="190dp"
+        android:layout_height="139dp"
+        android:layout_marginEnd="92dp"
+        android:contentDescription="@string/rock"
+        app:layout_constraintBottom_toBottomOf="@+id/imageMinecart"
+        app:layout_constraintEnd_toEndOf="@+id/imageGem2"
+        app:srcCompat="@drawable/rock2" />
+
+    <ImageView
+        android:id="@+id/imageGem2"
+        android:layout_width="195dp"
+        android:layout_height="128dp"
+        android:layout_marginEnd="72dp"
+        android:rotation="40"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imageMinecart"
+        app:srcCompat="@drawable/gem1"
+        android:contentDescription="@string/gem"/>
+
+    <ImageView
+        android:id="@+id/imageGem3"
+        android:layout_width="201dp"
+        android:layout_height="147dp"
+        android:layout_marginEnd="70dp"
+        android:contentDescription="@string/gem"
+        android:rotation="350"
+        app:layout_constraintEnd_toEndOf="@+id/imageGem2"
+        app:layout_constraintTop_toTopOf="@+id/imageGem2"
+        app:srcCompat="@drawable/gem1" />
+
+
+    <ImageView
+        android:id="@+id/imageGem4"
+        android:layout_width="89dp"
+        android:layout_height="87dp"
+        android:layout_marginStart="150dp"
+        android:layout_marginBottom="15dp"
+        android:rotation="30"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_play"
+        app:layout_constraintStart_toStartOf="@+id/btn_play"
+        app:srcCompat="@drawable/gem1"
+        android:contentDescription="@string/gem"/>
+
+    <ImageView
+        android:id="@+id/imageGem5"
+        android:layout_width="81dp"
+        android:layout_height="72dp"
+        android:layout_marginEnd="160dp"
+        android:layout_marginBottom="10dp"
+        android:contentDescription="@string/gem"
+        android:rotation="340"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_options"
+        app:layout_constraintEnd_toEndOf="@+id/btn_options"
         app:srcCompat="@drawable/gem1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

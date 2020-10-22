@@ -10,11 +10,13 @@
     <ImageView
         android:id="@+id/img_size"
         android:layout_width="619dp"
-        android:layout_height="348dp"
+        android:layout_height="0dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
         android:contentDescription="@string/wooden_bg"
         android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/sign1" />

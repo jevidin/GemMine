@@ -14,7 +14,9 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.Window;
@@ -115,6 +117,7 @@ public class GameActivity extends AppCompatActivity {
 
     private void gridButtonClicked(int col, int row) {
         Button btn = buttons[row][col];
+
         //lock button sizes:
         lockButtonSizes();
         //do stuff
@@ -131,9 +134,11 @@ public class GameActivity extends AppCompatActivity {
         if(gemMine.isScanned(row, col)){
             return;
         }
-
-        //if rock is not a gem, or alr found, show how many nearby
+        Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        //if rock is not a gem, or already found, show how many nearby
         if(!check || gemMine.isFound(row, col)){
+
+            v.vibrate(100);
             int nearby = gemMine.nearby(row, col);
             //display it
             btn.setText("" + nearby);
@@ -144,8 +149,15 @@ public class GameActivity extends AppCompatActivity {
 
         //if rock is a gem, increment gemsFound, update data
         else{
-            gemMine.gemFound(row,col);
+            //code for playing sound effect taken from https://www.youtube.com/watch?v=9oj4f8721LM
+            MediaPlayer media = MediaPlayer.create(this, R.raw.minecraft_exp_sound);
+            media.start();
 
+            //code for vibrating with a pattern is from https://www.youtube.com/watch?v=yDIbV-1cov4
+            long[] pattern = {0, 150, 50, 150};
+            v.vibrate(pattern, -1);
+
+            gemMine.gemFound(row,col);
             int newWidth = btn.getWidth();
             int newHeight = btn.getHeight();
             Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.gem1);

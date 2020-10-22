@@ -13,6 +13,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.media.Image;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -32,8 +33,6 @@ public class MainActivity extends AppCompatActivity {
         setupOptionsButton();
         setupHelpButton();
     }
-
-
 
     private void displayWelcome() {
         // code for fullscreen dialog partially taken from https://www.youtube.com/watch?v=ImV6y2K76qE
@@ -66,6 +65,13 @@ public class MainActivity extends AppCompatActivity {
         author1.startAnimation(bounce);
         author2.startAnimation(bounce);
 
+        //code to dismiss welcome page 4 seconds after animations play is taken from: https://stackoverflow.com/questions/41664409/wait-for-5-seconds
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                dialog.dismiss();
+            }
+        }, 8500);
         cLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,23 +79,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        /*
-        Button btn2 = view.findViewById(R.id.btn_back);
-        btn2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-                dialog.dismiss();
-
-            }
-        });*/
     }
 
     private void setupOptionsButton() {
         Button btn = findViewById(R.id.btn_options);
-        /*Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.jackolantern1);
-        Resources resource = getResources();
-        btn.setBackground(new BitmapDrawable(resource, originalBitmap));*/
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -102,9 +95,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupPlayButton(){
         Button btn = findViewById(R.id.btn_play);
-        /*Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.jackolantern1);
-        Resources resource = getResources();
-        btn.setBackground(new BitmapDrawable(resource, originalBitmap));*/
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

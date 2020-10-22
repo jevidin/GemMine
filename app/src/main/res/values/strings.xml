@@ -10,11 +10,12 @@
     <string name="how_to_play">Welcome to the Gem Mine! To begin playing, tap on the Play button on the Main Menu and you will be taken to the main game. Tap on a rock to mine it, if there\'s a gem in the rock then you have found a gem! If the rock is empty, it will scan and show how many gems are in its rows and columns combined. You may also tap on a revealed gem to scan. The objective is to find all the gems with the fewest scans possible. To change the number of rocks hidden , tap on the Options button on the Main Menu.</string>
     <string name="how_to_play_title">How to Play</string>
     <string name="back">back</string>
-    <string name="course_website">https://opencoursehub.cs.sfu.ca/jackt/grav-cms/cmpt276-2/home\nAuthors: Sean Tam, Jessica Li</string>
+    <string name="course_website">Authors: Sean Tam, Jessica Li\nhttps://opencoursehub.cs.sfu.ca/jackt/grav–cms/cmpt276-2/home</string>
     <string name="resources">Resources:\nhttps://cutewallpaper.org/21/pixel-cave-background/view-page-21.html\nhttps://www.deviantart.com/silverdustrailroad/favourites/79602872/background
                             \nhttps://www.pinterest.ca/pin/137993176066623292/\nhttps://www.canstockphoto.com/vector-clipart/mining-carts.html
                             \nhttps://www.kisscc0.com/clipart/train-rail-transport-passenger-car-steam-locomotiv-h1pzxb/\nhttps://www.needpix.com/photo/286179/rock-grey-square-stone-texture-surface-rough-marble-solid
                             \nhttps://pngio.com/PNG/a77370-wood-signage-png.html
+                            \nhttps://www.youtube.com/watch?v=XuWgqNqMZKk&amp;feature=emb_logo
 </string>
     <string name="play">Play</string>
     <string name="options">Options</string>
@@ -26,4 +27,6 @@
     <string name="minecart_image">Minecart Image</string>
     <string name="authors">Authors: Jessica Li and Sean Tam</string>
     <string name="skip">Tap anywhere to skip</string>
+    <string name="gem">gem</string>
+    <string name="rock">rock</string>
 </resources>

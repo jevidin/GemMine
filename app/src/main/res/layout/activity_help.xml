@@ -42,7 +42,7 @@
         android:layout_width="115dp"
         android:layout_height="24dp"
         android:layout_marginStart="76dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="35dp"
         android:fontFamily="casual"
         android:text="@string/how_to_play_title"
         android:textColor="#BD4104"
@@ -55,36 +55,35 @@
         android:id="@+id/btn_back"
         android:layout_width="88dp"
         android:layout_height="48dp"
-        android:layout_marginEnd="60dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="40dp"
         android:background="@drawable/sign1"
         android:fontFamily="casual"
         android:text="@string/back"
         android:textColor="#BD4104"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/help_Img"
-        app:layout_constraintEnd_toEndOf="@+id/help_Img" />
+        app:layout_constraintEnd_toEndOf="@+id/help_text" />
 
     <TextView
         android:id="@+id/txt_about"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="5dp"
         android:text="@string/course_website"
         android:textAlignment="textEnd"
         android:textColor="#BD4104"
         android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@+id/help_text"
-        app:layout_constraintTop_toBottomOf="@+id/help_text" />
+        app:layout_constraintBottom_toTopOf="@+id/help_text"
+        app:layout_constraintEnd_toEndOf="@+id/help_text" />
 
     <TextView
         android:id="@+id/txt_resources"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_width="424dp"
+        android:layout_height="110dp"
         android:text="@string/resources"
         android:textColor="#BD4104"
-        android:textSize="10sp"
+        android:textSize="8sp"
         app:layout_constraintStart_toStartOf="@+id/help_text"
         app:layout_constraintTop_toBottomOf="@+id/help_text" />
 
